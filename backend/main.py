@@ -52,6 +52,7 @@ def callback():
 
 
 def get_token():
+    """Вспомогательная функция для получения актуального токена (с авто-обновлением)"""
     token_info = session.get('token_info', None)
     if not token_info:
         return None
@@ -66,6 +67,7 @@ def get_token():
 
 @app.route("/api/spotify/playlists")
 def get_user_playlists():
+    """Пример защищенного эндпоинта: Получить список плейлистов пользователя"""
     token_info = get_token()
     if not token_info:
         return jsonify({"error": "User not authenticated"}), 401
